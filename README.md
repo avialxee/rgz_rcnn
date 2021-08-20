@@ -21,9 +21,11 @@ The code requires [Tensorflow ≥ 1.0 but < 2.0](https://www.tensorflow.org/inst
 
 **Install Modules:** 
 
-`pip install -U pip`
+```bash
+pip install -U pip
 
-`pip install -r requirements.txt`
+pip install -r requirements.txt
+```
 
 It is **highly recommended** to setup a standalone [python virtual environment](https://pypi.python.org/pypi/virtualenv) to install these modules and run the code.
 
@@ -34,21 +36,27 @@ The code requires at least 3 GB of disk space (to store images and pre-trained m
 
 * Clone this repository: 
 
-  `git clone https://github.com/chenwuperth/rgz_rcnn.git`
+  ```bash
+  git clone https://github.com/chenwuperth/rgz_rcnn.git
+  ```
 
 * Compile: 
 
-  `cd lib`
+  ```bash
+  cd lib
 
-  `make`
+  make
+  ```
 
 This should compile a bunch of [Cython](https://cython.org/)/ C code (for bounding box calculation), and will produce the dynamic libraries under both CPUs and GPUs (if available).
 
 * Download RGZ Data: 
 
-  `cd tools` 
+  ```bash
+  cd tools
 
-  `python download_data.py` 
+  python download_data.py
+  ```
 
 This will download data and RGZ model for training, testing, and demo.
 
@@ -60,9 +68,11 @@ This will download data and RGZ model for training, testing, and demo.
 #### To detect a multi-component radio galaxy!:
 **Run:**
 
-`cd tools`
+```bash
+cd tools
 
-`python demo.py --radio ../data/rgzdemo/FIRSTJ011349.0+065025.fits --ir ../data/rgzdemo/FIRSTJ011349.0+065025_infrared.png` 
+python demo.py --radio ../data/rgzdemo/FIRSTJ011349.0+065025.fits --ir ../data/rgzdemo/FIRSTJ011349.0+065025_infrared.png
+```
 
 Some examples of demo output are shown below:
 
@@ -73,9 +83,11 @@ Each detected box denotes an identified radio source, and its morphology is succ
 #### To evaluate the RGZ model on 4603 images on your laptop using CPUs only:
 **Run:**
 
-`cd experiments/scripts` 
+```bash
+cd experiments/scripts
 
-`bash example_test_cpu.sh`  
+bash example_test_cpu.sh
+```
 
 Please change the `RGZ_RCNN` environment variable in the script accordingly. The output records the [Average Precision](https://en.wikipedia.org/wiki/Evaluation_measures_(information_retrieval)#Average_precision) for each class and the overall [mean AP](https://en.wikipedia.org/wiki/Evaluation_measures_(information_retrieval)#Mean_average_precision) for the *D4* method.
 
@@ -92,9 +104,11 @@ Please change the `RGZ_RCNN` environment variable in the script accordingly. The
 #### To train your own RGZ model on GPU node managed by the SLURM job scheduler:
 **Run:**
 
-`cd experiments/scripts`
+```bash 
+cd experiments/scripts
 
-`sbatch example_train_slurm.sh` 
+sbatch example_train_slurm.sh
+```
 
 You will need to change resources, paths, and module names based on the configuration of your own cluster.
 
